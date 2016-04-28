@@ -15,35 +15,34 @@ import java.util.UUID;
 
 public class LiveStreamer {
 
-    public String toFile(String url) {
+    public void toFile(VideoFile videoFile) {
 
-       String filename = UUID.randomUUID().toString().concat(".mp4");
+
+
         List<String> commands = new ArrayList<String>();
         commands.add("livestreamer");
-        commands.add(url);
+        commands.add(videoFile.getUrl());
         commands.add("best");
         commands.add("-o");
-        commands.add(System.getProperty("java.io.tmpdir") + "/" + filename);
+        commands.add(System.getProperty("java.io.tmpdir") + "/" + videoFile.getFilename() + videoFile.getUuid().toString());
 
         try {
 
             ProcessBuilder pb = new ProcessBuilder(commands);
-
             Process process = pb.start();
             int errCode = process.waitFor();
-            System.out.println("Echo command executed, any errors? " + (errCode == 0 ? "No" : "Yes"));
-            System.out.println("Echo Output:\n" + output(process.getInputStream()));
+            System.out.println("Livestreamer command executed, any errors? " + (errCode == 0 ? "No" : "Yes"));
+            System.out.println("Livestreamer output:\n" + output(process.getInputStream()));
         } catch (Exception e) {
             System.out.println("ERR" + e);
 
         }
-        return filename;
     }
 
-    public byte[] getFile(String file) {
+    public byte[] getFile(VideoFile videofile) {
 
         try {
-            Path path = Paths.get(System.getProperty("java.io.tmpdir") + "/" + file);
+            Path path = Paths.get(System.getProperty("java.io.tmpdir") + "/" + videofile.getFilename() + videofile.getUuid());
             return Files.readAllBytes(path);
         } catch (Exception e) {
             return null;
