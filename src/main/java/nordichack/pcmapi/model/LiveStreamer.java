@@ -3,6 +3,7 @@ package nordichack.pcmapi.model;
 import nordichack.pcmapi.Utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -24,7 +25,7 @@ public class LiveStreamer {
         commands.add(videoFile.getUrl());
         commands.add("best");
         commands.add("-o");
-        commands.add(System.getProperty("java.io.tmpdir") + "/" + videoFile.getFilename() + videoFile.getUuid().toString());
+        commands.add(System.getProperty("java.io.tmpdir") + File.separator + videoFile.getFilename() + videoFile.getUuid().toString());
 
         try {
 
@@ -42,7 +43,7 @@ public class LiveStreamer {
     public byte[] getFile(VideoFile videofile) {
 
         try {
-            Path path = Paths.get(System.getProperty("java.io.tmpdir") + "/" + videofile.getFilename() + videofile.getUuid());
+            Path path = Paths.get(System.getProperty("java.io.tmpdir") + File.separator + videofile.getFilename() + videofile.getUuid());
             return Files.readAllBytes(path);
         } catch (Exception e) {
             return null;
