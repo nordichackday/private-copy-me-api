@@ -12,7 +12,7 @@ import java.security.NoSuchAlgorithmException;
 public class Utils {
 
     public static String getFilename(String url){
-         return Paths.get(url).getFileName().toString().replace("#","").concat(".mp4");
+         return url.substring(url.lastIndexOf("/"),url.length()-1).replace("#","").concat(".mp4");
     }
 
     public static void deleteFile(Path path){
