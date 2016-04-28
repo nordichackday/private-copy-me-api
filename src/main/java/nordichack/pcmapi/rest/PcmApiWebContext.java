@@ -20,7 +20,7 @@ import java.util.List;
     "nordichack.pcmapi"
 })
 
-public class CspApiWebContext extends WebMvcConfigurerAdapter {
+public class PcmApiWebContext extends WebMvcConfigurerAdapter {
 
 
     @Bean
