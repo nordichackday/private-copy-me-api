@@ -22,11 +22,11 @@ public class DownloadRestService {
     @Autowired
     private LiveStreamerHandler liveStreamerHandler;
 
-    @Async
+    //@Async
     public byte[] downloadVideo(String url, HttpHeaders httpHeaders) {
         return liveStreamerHandler.toMP4(url);
     }
 
-  
+
 
 }
