@@ -1,6 +1,6 @@
 spring:
   application:
-    name: csp-apisb
+    name: private-copy-me-api
   jmx:
     enabled: false
   http.encoding:

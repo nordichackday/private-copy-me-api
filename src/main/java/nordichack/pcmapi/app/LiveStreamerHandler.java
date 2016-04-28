@@ -10,7 +10,7 @@ public class LiveStreamerHandler {
     LiveStreamer liveStreamer;
 
     public byte[] toMP4(String url) {
-        liveStreamer.toFile(url);
-        return liveStreamer.getFile();
+        final String file = liveStreamer.toFile(url);
+        return liveStreamer.getFile(file);
     }
 }

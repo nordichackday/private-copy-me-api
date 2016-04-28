@@ -10,7 +10,7 @@ import static org.slf4j.bridge.SLF4JBridgeHandler.install;
 import static org.slf4j.bridge.SLF4JBridgeHandler.removeHandlersForRootLogger;
 
 @SpringBootApplication
-@Import({CspApiWebContext.class, PcmApiContext.class})
+@Import({PcmApiWebContext.class, PcmApiContext.class})
 public class PcmWebApplication  {
 
 

@@ -1,28 +1,31 @@
 package nordichack.pcmapi.model;
 
-import java.io.*;
+import nordichack.pcmapi.Utils;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class LiveStreamer {
 
-    public boolean toFile(String url){
+    public String toFile(String url) {
+
+       String filename = UUID.randomUUID().toString().concat(".mp4");
         List<String> commands = new ArrayList<String>();
         commands.add("livestreamer");
-       commands.add(url);
-      commands.add("best");
-         commands.add("-o");
-        commands.add(System.getProperty("java.io.tmpdir") + "/video.mp4");
-
+        commands.add(url);
+        commands.add("best");
+        commands.add("-o");
+        commands.add(System.getProperty("java.io.tmpdir") + "/" + filename);
 
         try {
-
-
-
 
             ProcessBuilder pb = new ProcessBuilder(commands);
 
@@ -30,21 +33,20 @@ public class LiveStreamer {
             int errCode = process.waitFor();
             System.out.println("Echo command executed, any errors? " + (errCode == 0 ? "No" : "Yes"));
             System.out.println("Echo Output:\n" + output(process.getInputStream()));
-            return true;
         } catch (Exception e) {
             System.out.println("ERR" + e);
 
         }
-        return false;
+        return filename;
     }
 
-    public byte[] getFile() {
+    public byte[] getFile(String file) {
 
         try {
-            Path path = Paths.get(System.getProperty("java.io.tmpdir") + "/" + "video.mp4");
+            Path path = Paths.get(System.getProperty("java.io.tmpdir") + "/" + file);
             return Files.readAllBytes(path);
-        } catch ( Exception e) {
-        return null;
+        } catch (Exception e) {
+            return null;
         }
 
     }
@@ -63,8 +65,6 @@ public class LiveStreamer {
         }
         return sb.toString();
     }
-
-
 
 
 }

@@ -2,7 +2,7 @@ package nordichack.app.cspapi.rest;
 
 
 import nordichack.pcmapi.app.PcmApiContext;
-import nordichack.pcmapi.rest.CspApiWebContext;
+import nordichack.pcmapi.rest.PcmApiWebContext;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebIntegrationTest({"server.port=0", "management.port=0"})
-@SpringApplicationConfiguration(classes = {CspApiWebContext.class, PcmApiContext.class})
+@SpringApplicationConfiguration(classes = {PcmApiWebContext.class, PcmApiContext.class})
 abstract class AbstractRestIntegrationTest {
 
     MockMvc mockMvc;
