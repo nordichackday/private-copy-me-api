@@ -1,0 +1,11 @@
+.idea
+*.iml
+**/target/
+
+coverage-error.log
+
+**/build
+
+*.log
+.gradle
+schema

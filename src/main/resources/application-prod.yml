@@ -1,0 +1,16 @@
+spring:
+  main:
+    show-banner: false
+
+exceptions:
+  debug: false
+
+endpoints:
+  autoconfig.enabled: false
+  beans.enabled: false
+  configprops.enabled: false
+  dump.enabled: false
+  env.enabled: false
+  mappings.enabled: false
+  trace.enabled: false
+

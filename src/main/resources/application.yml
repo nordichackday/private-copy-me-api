@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: csp-apisb
+  jmx:
+    enabled: false
+  http.encoding:
+    charset: UTF-8
+    enabled: true
+    force: true
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .jsp
+
+info:
+  app:
+    name: ${spring.application.name}
+    version: ${VERSION:unknown}
+
+server:
+  port: 8080
+  tomcat:
+    max-http-header-size: 16384
+
+endpoints:
+  autoconfig.enabled: true
+  beans.enabled: true
+  configprops.enabled: true
+  dump.enabled: true
+  env.enabled: true
+  health.enabled: true
+  info.enabled: true
+  metrics.enabled: true
+  mappings.enabled: true
+  shutdown.enabled: false
+  trace.enabled: true
+
+exceptions:
+  debug: true
+
+
+

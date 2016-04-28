@@ -1,0 +1,31 @@
+Configuration:
+  status: warn
+  verbose: false
+
+  Appenders:
+    Console:
+      name: Console
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: time=%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} level=%p logger="%logger{1.}#%M() stacktrace="%replace{%ex}{\n}{\\n}" %replace{%msg}{\n}{\\n}%n
+        alwaysWriteExceptions: false
+
+  Loggers:
+
+    AsyncLogger:
+      - name: "nordichack.pcmapi"
+        level: info
+        additivity: false
+        includeLocation: true
+        AppenderRef:
+          - ref: Console
+      - name: "org.springframework.web.client"
+        level: debug
+        additivity: false
+        AppenderRef:
+          - ref: Console
+
+    Root:
+      level: info
+      AppenderRef:
+        - ref: Console
