@@ -17,11 +17,12 @@ public class DownloadController {
     private DownloadRestService downloadRestService;
 
 
-    @RequestMapping(method =  RequestMethod.GET , consumes = {APPLICATION_JSON_VALUE})
+    @RequestMapping(method =  RequestMethod.GET)
     public ResponseEntity<byte[]> download(@RequestParam(required = true, value = "url") String url,  @RequestHeader HttpHeaders headers) {
 
         final HttpHeaders headersOut = new HttpHeaders();
-        headers.setContentType(MediaType.parseMediaType("video/mp4"));
+        headersOut.setContentType(MediaType.parseMediaType("video/mp4"));
+        headersOut.set("Content-Disposition", "attachment; filename=\"download.mp4\"");
         return new ResponseEntity<>(downloadRestService.downloadVideo(url, headers), headersOut, HttpStatus.OK);
 
     }
